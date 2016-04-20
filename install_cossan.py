@@ -113,11 +113,11 @@ def main():
     cossanx_archive_file = os.path.join(build_dir, 'COSSANX_Linux_R2014a.zip')
     cossanx_url = 'https://www.dropbox.com/s/o5x6rv7ycxdhfd1/COSSANX_Linux_R2014a.zip?dl=1&pv=1'
     download_file(cossanx_url, cossanx_archive_file)
-    cossanx_install_dir = os.path.join(ROOT_INSTALL_DIR, 'cossanx')
-    unzip(cossanx_archive_file, cossanx_install_dir)
+    cossanx_extract_dir = os.path.join(ROOT_INSTALL_DIR, 'cossanx')
+    unzip(cossanx_archive_file, cossanx_extract_dir)
 
     # Read contents of original start_cossan script.
-    cossanx_install_dir = os.path.join(cossanx_install_dir, 'COSSANX_Linux_R2014a')
+    cossanx_install_dir = os.path.join(cossanx_extract_dir, 'COSSANX_Linux_R2014a')
     start_cossan_script = os.path.join(cossanx_install_dir, 'start_cossan.sh')
     with open(start_cossan_script, 'r') as f:
         lines = f.readlines()
