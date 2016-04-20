@@ -52,6 +52,7 @@ def unzip(source_archive, destination_dir):
     else:
         print("Extracted archive: " + destination_dir + " already exists")
 
+
 def mkdir_p(dir_path):
     """Emulates bash 'mkdir -p' behaviour, creating parent directories if
     required, and doing nothing if the directory already exists.
@@ -63,6 +64,7 @@ def mkdir_p(dir_path):
             pass
         else:
             raise
+
 
 def main():
     """Main function to download and install prerequisites and COSSAN-X."""
