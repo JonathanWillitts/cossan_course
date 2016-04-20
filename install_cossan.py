@@ -52,6 +52,17 @@ def unzip(source_archive, destination_dir):
     else:
         print("Extracted archive: " + destination_dir + " already exists")
 
+def mkdir_p(dir_path):
+    """Emulates bash 'mkdir -p' behaviour, creating parent directories if
+    required, and doing nothing if the directory already exists.
+    """
+    try:
+        os.makedirs(dir_path)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(dir_path):
+            pass
+        else:
+            raise
 
 def main():
     """Main function to download and install prerequisites and COSSAN-X."""
@@ -62,15 +73,9 @@ def main():
 
     # Create build dir if it doesn't already exist.
     build_dir = os.path.join(ROOT_INSTALL_DIR, 'build')
-    try:
-        os.makedirs(build_dir)
-    except OSError as exc:
-        if exc.errno == errno.EEXIST and os.path.isdir(build_dir):
-            pass
-        else:
-            raise
+    mkdir_p(build_dir)
 
-    # Download and extract of MCR runtime installer.
+    # Download and extract MCR runtime installer.
     mcr_url = 'http://uk.mathworks.com/supportfiles/downloads/R2014a/deployment_files/R2014a/installers/glnxa64/MCR_R2014a_glnxa64_installer.zip'
     mcr_archive_file = os.path.join(build_dir, 'MCR_R2014a_glnxa64_installer.zip')
     download_file(mcr_url, mcr_archive_file)
