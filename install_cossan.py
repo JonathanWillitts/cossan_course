@@ -68,9 +68,9 @@ def mkdir_p(dir_path):
 
 def main():
     """Main function to download and install prerequisites and COSSAN-X."""
-    # Install prerequisite WebKitGTK.
-    print("Installing WebKitGTK using yum...")
-    command = 'sudo yum install webkitgtk --assumeyes'
+    # Install prerequisite Java 1.7 & WebKitGTK.
+    print("Installing prerequisites: Java 1.7 & WebKitGTK - using yum...")
+    command = 'sudo yum install java-1.7.0-openjdk webkitgtk --assumeyes'
     subprocess.check_call(shlex.split(command))
 
     # Create build dir if it doesn't already exist.
